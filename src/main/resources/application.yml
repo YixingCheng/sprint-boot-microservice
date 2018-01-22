@@ -6,8 +6,18 @@ spring.jmx:
    enabled: false
 
 spring.datasource:
-    driverClassName: org.h2.Driver
-    url: jdbc:h2:mem:bootexample;MODE=MySQL
+  driverClassName: org.postgresql.Driver
+  url: jdbc:postgresql://localhost:5432/postgres
+  username: postgres
+  password: postgres
+
+spring.jpa:
+  hibernate:
+    dialect: org.hibernate.dialect.MySQLInnoDBDialect
+    ddl-auto: update # todo: in non-dev environments, comment this out:
+  show-sql: true
+  database: postgresql
+  database-platform: org.hibernate.dialect.PostgreSQLDialect
 
 server:
   port: 8090
@@ -44,6 +54,10 @@ spring:
     console:
       enabled: true
 
+spring.datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:mem:bootexample;MODE=MySQL
+
 spring.jpa:
     hibernate.ddl-auto: create-drop
 
@@ -53,4 +67,6 @@ car.service:
 logging:
   file: boot_example.log
   org.hibernate: INFO
+
+---
 
